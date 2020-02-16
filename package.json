@@ -4,7 +4,7 @@
   "description": "KhanShaheb's Blog",
   "main": "build.js",
   "scripts": {
-    "test": "node build.js"
+    "start": "nodemon build.js"
   },
   "repository": {
     "type": "git",
