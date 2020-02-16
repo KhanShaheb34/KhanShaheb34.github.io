@@ -19,5 +19,6 @@
   "bugs": {
     "url": "https://github.com/KhanShaheb34/KhanShaheb34.github.io/issues"
   },
-  "homepage": "https://github.com/KhanShaheb34/KhanShaheb34.github.io#readme"
+  "homepage": "https://github.com/KhanShaheb34/KhanShaheb34.github.io#readme",
+  "type": "module"
 }
