@@ -3,6 +3,7 @@ const fs = require("fs");
 // Loading data
 const basicData = JSON.parse(fs.readFileSync("./data/basics.json").toString());
 const navData = JSON.parse(fs.readFileSync("./data/nav.json").toString());
+const postData = JSON.parse(fs.readFileSync("./data/posts.json").toString());
 
 // Loading chunks for index page
 let head = fs.readFileSync("./parts/head.pt").toString();
@@ -22,18 +23,16 @@ for (const data of navData) {
 }
 nav = nav.replace(/{{ navItems }}/g, navItems);
 
+// Make the posts ready
+
+let posts = "";
+for (const data of postData) {
+  posts += createTemplate(singlePost, data);
+}
+post = post.replace(/{{ posts }}/g, posts);
+
 // Building index page
-let indexPage =
-  head +
-  nav +
-  header +
-  beforePost +
-  singlePost +
-  singlePost +
-  singlePost +
-  singlePost +
-  afterPost +
-  footer;
+let indexPage = head + nav + header + post + footer;
 
 indexPage = createTemplate(indexPage, basicData);
 fs.writeFileSync("./index.html", indexPage);
