@@ -1,0 +1,23 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "KhanShaheb's Blog",
+  "main": "build.js",
+  "scripts": {
+    "test": "node build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KhanShaheb34/KhanShaheb34.github.io.git"
+  },
+  "keywords": [
+    "blog",
+    "portfolio"
+  ],
+  "author": "KhanShaheb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KhanShaheb34/KhanShaheb34.github.io/issues"
+  },
+  "homepage": "https://github.com/KhanShaheb34/KhanShaheb34.github.io#readme"
+}
