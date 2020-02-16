@@ -11,8 +11,6 @@ let nav = fs.readFileSync("./parts/nav.pt").toString();
 let navItem = fs.readFileSync("./parts/navItem.pt").toString();
 let footer = fs.readFileSync("./parts/footer.pt").toString();
 let header = fs.readFileSync("./parts/index/header.pt").toString();
-let beforePost = fs.readFileSync("./parts/index/before_post.pt").toString();
-let afterPost = fs.readFileSync("./parts/index/after_post.pt").toString();
 let singlePost = fs.readFileSync("./parts/index/single_post.pt").toString();
 let post = fs.readFileSync("./parts/index/posts.pt").toString();
 
@@ -24,7 +22,6 @@ for (const data of navData) {
 nav = nav.replace(/{{ navItems }}/g, navItems);
 
 // Make the posts ready
-
 let posts = "";
 for (const data of postData) {
   posts += createTemplate(singlePost, data);
@@ -35,7 +32,7 @@ post = post.replace(/{{ posts }}/g, posts);
 let indexPage = head + nav + header + post + footer;
 
 indexPage = createTemplate(indexPage, basicData);
-fs.writeFileSync("./index.html", indexPage);
+fs.writeFileSync("../index.html", indexPage);
 
 // Utils
 function createTemplate(page, data) {
