@@ -1,19 +1,26 @@
-"use-strict";
-
 const fs = require("fs");
 
 // Loading data
-const dataString = fs.readFileSync("./data/basics.json");
-const data = JSON.parse(dataString);
+const basicData = JSON.parse(fs.readFileSync("./data/basics.json").toString());
+const navData = JSON.parse(fs.readFileSync("./data/nav.json").toString());
 
 // Loading chunks for index page
-const head = fs.readFileSync("./parts/head.pt");
-const nav = fs.readFileSync("./parts/nav.pt");
-const footer = fs.readFileSync("./parts/footer.pt");
-const header = fs.readFileSync("./parts/index/header.pt");
-const beforePost = fs.readFileSync("./parts/index/before_post.pt");
-const afterPost = fs.readFileSync("./parts/index/after_post.pt");
-const singlePost = fs.readFileSync("./parts/index/single_post.pt");
+let head = fs.readFileSync("./parts/head.pt").toString();
+let nav = fs.readFileSync("./parts/nav.pt").toString();
+let navItem = fs.readFileSync("./parts/navItem.pt").toString();
+let footer = fs.readFileSync("./parts/footer.pt").toString();
+let header = fs.readFileSync("./parts/index/header.pt").toString();
+let beforePost = fs.readFileSync("./parts/index/before_post.pt").toString();
+let afterPost = fs.readFileSync("./parts/index/after_post.pt").toString();
+let singlePost = fs.readFileSync("./parts/index/single_post.pt").toString();
+let post = fs.readFileSync("./parts/index/posts.pt").toString();
+
+// Make the nav ready
+let navItems = "";
+for (const data of navData) {
+  navItems += createTemplate(navItem, data);
+}
+nav = nav.replace(/{{ navItems }}/g, navItems);
 
 // Building index page
 let indexPage =
@@ -28,7 +35,7 @@ let indexPage =
   afterPost +
   footer;
 
-indexPage = createTemplate(indexPage, data);
+indexPage = createTemplate(indexPage, basicData);
 fs.writeFileSync("./index.html", indexPage);
 
 // Utils
