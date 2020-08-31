@@ -1,3 +1,3 @@
 # Portfolio of KhanShaheb34
 
-Go to [khanshaheb.me](http://khanshaheb.me/) to have a look. 😉
+Go to [khanshaheb.me](https://khanshaheb.me/) to have a look. 😉
